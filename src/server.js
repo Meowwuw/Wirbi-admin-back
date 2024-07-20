@@ -7,6 +7,8 @@ const app = express();
 const colaboradorRoutes = require('./routes/colaboradores');
 const planillaRoutes = require('./routes/planillas');
 
+console.log('MongoDB URI:', process.env.MONGODB_URI);  // Log the MongoDB URI
+
 mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
