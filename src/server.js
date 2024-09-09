@@ -7,8 +7,6 @@ const app = express();
 const colaboradorRoutes = require('./routes/colaboradores');
 const planillaRoutes = require('./routes/planillas');
 
-console.log('MongoDB URI:', process.env.MONGODB_URI);  // Log the MongoDB URI
-
 mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -20,6 +18,12 @@ mongoose.connect(process.env.MONGODB_URI, {
 
 app.use(cors());
 app.use(express.json());
+
+// Ruta para la raíz del servidor
+app.get('/', (req, res) => {
+  res.send('Bienvenido a la API de Wirbi');
+});
+
 app.use('/api/colaboradores', colaboradorRoutes);
 app.use('/api/planillas', planillaRoutes);
 
